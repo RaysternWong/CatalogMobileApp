@@ -77,17 +77,6 @@
             WidthRequest="-1" />
 
         <!--  Product Description  -->
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="0,0,0,8"
-            LineBreakMode="TailTruncation"
-            LineHeight="{OnPlatform Android=1.25,
-                                    Default=-1}"
-            MaxLines="2"
-            Style="{StaticResource SimpleLabelStyle}"
-            Text="{Binding Summary}" />
-
         <StackLayout
             Grid.Row="2"
             Grid.Column="1"
@@ -104,23 +93,6 @@
                 Style="{StaticResource SimpleLabelStyle}"
                 Text="{Binding DiscountPrice, StringFormat='${0:0 }'}"
                 TextColor="{DynamicResource PrimaryColor}" />
-
-            <Label
-                Margin="0,6,0,6"
-                Style="{StaticResource SimpleLabelStyle}"
-                Text="{Binding ActualPrice, StringFormat='${0:0.00}'}"
-                TextDecorations="Strikethrough" />
-
         </StackLayout>
-
-        <!--  Product Rating  -->
-        <rating:SfRating
-            Grid.Row="3"
-            Grid.Column="1"
-            ItemSize="13"
-            ItemSpacing="1"
-            RatingSettings="{StaticResource CommonRatingSettings}"
-            Style="{StaticResource RatingStyle}"
-            Value="{Binding OverallRating}" />
     </Grid>
 </Grid>
