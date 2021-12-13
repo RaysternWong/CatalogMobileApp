@@ -33,10 +33,5 @@ namespace CatalogMobileApp.Views.Templates
             get { return this.GetValue(ParentBindingContextProperty); }
             set { this.SetValue(ParentBindingContextProperty, value); }
         }
-
-        void OnValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            entry1.Text = e.NewValue.ToString();
-        }
     }
 }

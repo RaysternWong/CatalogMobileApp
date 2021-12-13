@@ -84,7 +84,7 @@
             <!--  Product Price  -->
             <Label
                 FontFamily="Montserrat-SemiBold"
-                FontSize="20"
+                FontSize="19"
                 LineHeight="{OnPlatform Android=1.25,
                                         Default=-1}"
                 Style="{StaticResource SimpleLabelStyle}"
@@ -92,26 +92,20 @@
                 TextColor="{DynamicResource PrimaryColor}" />
 
 
-            <StackLayout Margin="0,0,0,50" Orientation="Horizontal">
-
+            <StackLayout x:Name="Container">
                 <Stepper
-                    HorizontalOptions="Center"
+                    x:Name="stepper"
                     Increment="1"
-                    Maximum="360"
-                    Width = 5
-                    ValueChanged="OnValueChanged" />
-
-                <Entry x:Name="entry1" />
-
+                    Maximum="100"
+                    Minimum="0" />
                 <Label
-                    FontFamily="Montserrat-SemiBold"
-                    FontSize="20"
-                    LineHeight="{OnPlatform Android=1.25,
-                                            Default=-1}"
-                    Style="{StaticResource SimpleLabelStyle}"
+                    BindingContext="{x:Reference stepper}"
+                    FontSize="19"
+                    Text="{Binding Value}" />
+                <Label
+                    FontSize="19"
                     Text="KG"
-                    TextColor="{DynamicResource TwitterBlue}" />
-
+                    TextColor="{DynamicResource Blue}" />
             </StackLayout>
         </StackLayout>
     </Grid>
