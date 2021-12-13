@@ -20,7 +20,7 @@ namespace CatalogMobileApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new CatalogListPage();
         }
 
         protected override void OnStart()
