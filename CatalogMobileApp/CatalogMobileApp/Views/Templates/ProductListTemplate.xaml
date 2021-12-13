@@ -6,7 +6,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:converter="clr-namespace:CatalogMobileApp.Converters"
     xmlns:helper="clr-namespace:CatalogMobileApp.Helpers"
-    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     x:Name="productListTemplate">
 
     <Grid.Resources>
@@ -76,13 +75,11 @@
             TextColor="{Binding IsFavourite, Converter={x:StaticResource boolToColorConverter}, ConverterParameter=4}"
             WidthRequest="-1" />
 
-        <!--  Product Description  -->
         <StackLayout
             Grid.Row="2"
             Grid.Column="1"
-            Margin="0,0,0,16"
-            Orientation="Horizontal"
-            Spacing="2">
+            Margin="0,0,0,26"
+            Spacing="9">
 
             <!--  Product Price  -->
             <Label
@@ -91,8 +88,27 @@
                 LineHeight="{OnPlatform Android=1.25,
                                         Default=-1}"
                 Style="{StaticResource SimpleLabelStyle}"
-                Text="{Binding DiscountPrice, StringFormat='${0:0 }'}"
+                Text="{Binding DiscountPrice, StringFormat='RM{0:0 }'}"
                 TextColor="{DynamicResource PrimaryColor}" />
+
+            <Label
+                FontFamily="Montserrat-SemiBold"
+                FontSize="20"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource SimpleLabelStyle}"
+                Text="KG"
+                TextColor="{DynamicResource TwitterBlue}" />
+
+            <Stepper
+                Increment="1"
+                Maximum="1000"
+                Minimum="0"
+                ValueChanged="OnValueChanged"
+                Value="5" />
+
+
+
         </StackLayout>
     </Grid>
 </Grid>
