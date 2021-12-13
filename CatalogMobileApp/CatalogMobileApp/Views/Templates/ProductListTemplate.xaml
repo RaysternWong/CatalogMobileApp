@@ -91,24 +91,28 @@
                 Text="{Binding DiscountPrice, StringFormat='RM{0:0 }'}"
                 TextColor="{DynamicResource PrimaryColor}" />
 
-            <Label
-                FontFamily="Montserrat-SemiBold"
-                FontSize="20"
-                LineHeight="{OnPlatform Android=1.25,
-                                        Default=-1}"
-                Style="{StaticResource SimpleLabelStyle}"
-                Text="KG"
-                TextColor="{DynamicResource TwitterBlue}" />
 
-            <Stepper
-                Increment="1"
-                Maximum="1000"
-                Minimum="0"
-                ValueChanged="OnValueChanged"
-                Value="5" />
+            <StackLayout Margin="0,0,0,50" Orientation="Horizontal">
 
+                <Stepper
+                    HorizontalOptions="Center"
+                    Increment="1"
+                    Maximum="360"
+                    Width = 5
+                    ValueChanged="OnValueChanged" />
 
+                <Entry x:Name="entry1" />
 
+                <Label
+                    FontFamily="Montserrat-SemiBold"
+                    FontSize="20"
+                    LineHeight="{OnPlatform Android=1.25,
+                                            Default=-1}"
+                    Style="{StaticResource SimpleLabelStyle}"
+                    Text="KG"
+                    TextColor="{DynamicResource TwitterBlue}" />
+
+            </StackLayout>
         </StackLayout>
     </Grid>
 </Grid>
