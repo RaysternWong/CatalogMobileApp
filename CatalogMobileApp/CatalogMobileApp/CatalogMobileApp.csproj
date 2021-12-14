@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="106.15.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.57" />
