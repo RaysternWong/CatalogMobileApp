@@ -1,10 +1,12 @@
-﻿using CatalogMobileApp.Models;
+﻿using CatalogMobileApp.API;
+using CatalogMobileApp.Models;
 using CatalogMobileApp.ViewModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
 
 namespace CatalogMobileApp.DataService
@@ -66,10 +68,8 @@ namespace CatalogMobileApp.DataService
 
             List<Catalog> catalogs = new List<Catalog>();
 
-            //GetCatalog getCatalog = new GetCatalog();
-            //catalogs = getCatalog.GetAllCatalogs();
-
-            if(catalogs?.Count > 0)
+  
+            if (catalogs?.Count > 0)
             {
                 File.WriteAllText(file, JsonConvert.SerializeObject(catalogs));
             }

@@ -16,7 +16,7 @@ namespace CatalogMobileApp.Models
         public string PreviewImage
         {
             //get => Images[0]?.SrcSmall;
-            get => "https://mangomart-autocount.myboostorder.com/wp-content/uploads/sites/446/2021/11/2-250x227.png";
+            get => "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/Image1.png";
         }
 
         [JsonProperty("id")]
