@@ -7,6 +7,18 @@ namespace CatalogMobileApp.Models
 {
     public class Catalog
     {
+
+        public string Price 
+        {
+            get => Variations[0]?.RegularPrice; 
+        }
+
+        public string PreviewImage
+        {
+            //get => Images[0]?.SrcSmall;
+            get => "https://mangomart-autocount.myboostorder.com/wp-content/uploads/sites/446/2021/11/2-250x227.png";
+        }
+
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("name")]
