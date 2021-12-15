@@ -111,7 +111,7 @@
             RowSpacing="0">
 
             <!--  Title View  -->
-            <controls:TitleView Title="Dress" Grid.Row="0">
+            <controls:TitleView Title="Catalog" Grid.Row="0">
                 <controls:TitleView.LeadingView>
                     <buttons:SfButton
                         x:Name="backButton"
