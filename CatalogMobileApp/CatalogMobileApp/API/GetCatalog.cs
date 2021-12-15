@@ -5,6 +5,7 @@ using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CatalogMobileApp.API
 {
@@ -47,13 +48,75 @@ namespace CatalogMobileApp.API
                 catalogs.AddRange(GetCatalogByPage(page));
             }
 
-            //if(catalogs.Count < totalItem)
-            //{
-            //   log Error
-            //}
+
+            return catalogs;
+
+        }
+
+        public async Task<List<Catalog>> GetAllCatalogsAsync()
+        {
+            List<Catalog> catalogs;
+            int page = 1;
+
+            var response = GetResponseByPageAsync(page).Result;
+            int totalPage = Convert.ToInt32(response.Headers.Where(x => x.Name == TotalPageHeader)
+                            .Select(x => x.Value)
+                            .FirstOrDefault());
+
+            int totalItem = Convert.ToInt32(response.Headers.Where(x => x.Name == TotalItemHeader)
+                            .Select(x => x.Value)
+                            .FirstOrDefault());
+
+            catalogs = JsonConvert.DeserializeObject<List<Catalog>>(response.Content);
+
+            while (page < totalPage)
+            {
+                page++;
+                catalogs.AddRange(await GetCatalogByPageAsync(page));
+            }
 
             return catalogs;
         }
+
+        private async Task<List<Catalog>> GetCatalogByPageAsync(int page)
+        {
+            List<Catalog> catalogs = new List<Catalog>();
+            string content;
+            try
+            {
+                var response = await GetResponseByPageAsync(page);
+                content = response.Content;
+                catalogs = JsonConvert.DeserializeObject<List<Catalog>>(response.Content);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return catalogs;
+        }
+
+
+        private async Task<IRestResponse> GetResponseByPageAsync(int page)
+        {
+            var client = new RestClient(Url);
+            client.Authenticator = new HttpBasicAuthenticator(AuthName, AuthPassword);
+
+            var request = new RestRequest(Method.GET);
+            request.AddParameter("page", page);
+
+            try
+            {
+                var response = await client.ExecuteAsync(request);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
 
         private IRestResponse GetResponseByPage(int page)
         {
