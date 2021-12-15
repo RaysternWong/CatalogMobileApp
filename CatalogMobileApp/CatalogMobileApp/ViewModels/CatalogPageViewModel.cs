@@ -16,7 +16,6 @@ namespace CatalogMobileApp.ViewModels
     {
         #region Fields
 
-        private ObservableCollection<Category> filterOptions;
 
         private ObservableCollection<string> sortOptions;
 
@@ -43,132 +42,22 @@ namespace CatalogMobileApp.ViewModels
         /// </summary>
         public CatalogPageViewModel()
         {
-            this.FilterOptions = new ObservableCollection<Category>
-            {
-                new Category
-                {
-                    Name = "Gender",
-                    SubCategories = new List<string>
-                    {
-                        "Men",
-                        "Women",
-                    },
-                },
-                new Category
-                {
-                    Name = "Brand",
-                    SubCategories = new List<string>
-                    {
-                        "Brand A",
-                        "Brand B",
-                    },
-                },
-                new Category
-                {
-                    Name = "Categories",
-                    SubCategories = new List<string>
-                    {
-                        "Category A",
-                        "Category B",
-                    },
-                },
-                new Category
-                {
-                    Name = "Color",
-                    SubCategories = new List<string>
-                    {
-                        "Maroon",
-                        "Pink",
-                    },
-                },
-                new Category
-                {
-                    Name = "Price",
-                    SubCategories = new List<string>
-                    {
-                        "Above 3000",
-                        "1000 to 3000",
-                        "Below 1000",
-                    },
-                },
-                new Category
-                {
-                    Name = "Size",
-                    SubCategories = new List<string>
-                    {
-                        "S", "M", "L", "XL", "XXL",
-                    },
-                },
-                new Category
-                {
-                    Name = "Patterns",
-                    SubCategories = new List<string>
-                    {
-                        "Pattern 1", "Pattern 2",
-                    },
-                },
-                new Category
-                {
-                    Name = "Offers",
-                    SubCategories = new List<string>
-                    {
-                        "Buy 1 Get 1", "Buy 1 Get 2",
-                    },
-                },
-                new Category
-                {
-                    Name = "Coupons",
-                    SubCategories = new List<string>
-                    {
-                        "Coupon 1", "Coupon 2",
-                    },
-                },
-            };
-
-            this.SortOptions = new ObservableCollection<string>
-            {
-                "New Arrivals",
-                "Price - high to low",
-                "Price - Low to High",
-                "Popularity",
-                "Discount",
-            };
+           
         }
 
         #endregion
 
         #region Public properties
 
-        /// <summary>
-        /// Gets or sets the property that has been bound with a list view, which displays the item details in tile.
-        /// </summary>
-        [DataMember(Name = "products")]
-        public ObservableCollection<Product> Products
+   
+
+        [DataMember(Name = "catalogs")]
+        public ObservableCollection<Catalog> Catalogs
         {
             get; set;
         }
 
-        /// <summary>
-        /// Gets or sets the property that has been bound with a list view, which displays the filter options.
-        /// </summary>
-        public ObservableCollection<Category> FilterOptions
-        {
-            get
-            {
-                return this.filterOptions;
-            }
-
-            private set
-            {
-                if (this.filterOptions == value)
-                {
-                    return;
-                }
-
-                this.SetProperty(ref this.filterOptions, value);
-            }
-        }
-
+     
         /// <summary>
         /// Gets or sets the property has been bound with a list view, which displays the sort details.
         /// </summary>
@@ -298,10 +187,6 @@ namespace CatalogMobileApp.ViewModels
         /// <param name="obj">The Object</param>
         private void AddFavouriteClicked(object obj)
         {
-            if (obj is Product product)
-            {
-                product.IsFavourite = !product.IsFavourite;
-            }
         }
 
         /// <summary>

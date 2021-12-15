@@ -18,8 +18,6 @@ namespace CatalogMobileApp
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new CatalogListPage();
         }
 

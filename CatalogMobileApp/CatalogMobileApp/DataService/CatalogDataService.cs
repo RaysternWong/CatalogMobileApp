@@ -1,6 +1,12 @@
-﻿using CatalogMobileApp.ViewModels;
+﻿using CatalogMobileApp.API;
+using CatalogMobileApp.Models;
+using CatalogMobileApp.ViewModels;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Reflection;
-using System.Runtime.Serialization.Json;
+using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
 
 namespace CatalogMobileApp.DataService
@@ -42,7 +48,7 @@ namespace CatalogMobileApp.DataService
         /// </summary>
         public CatalogPageViewModel CatalogPageViewModel =>
             this.catalogPageViewModel ??
-            (this.catalogPageViewModel = PopulateData<CatalogPageViewModel>("ecommerce.json"));
+            (this.catalogPageViewModel = PopulateData("catalogs.json"));
 
         #endregion
 
@@ -54,21 +60,35 @@ namespace CatalogMobileApp.DataService
         /// <typeparam name="T">Type of view model.</typeparam>
         /// <param name="fileName">Json file to fetch data.</param>
         /// <returns>Returns the view model object.</returns>
-        private static T PopulateData<T>(string fileName)
+        private static CatalogPageViewModel PopulateData(string fileName)
         {
             var file = "CatalogMobileApp.Data." + fileName;
 
             var assembly = typeof(App).GetTypeInfo().Assembly;
 
-            T data;
+            List<Catalog> catalogs = new List<Catalog>();
 
-            using (var stream = assembly.GetManifestResourceStream(file))
+  
+            if (catalogs?.Count > 0)
             {
-                var serializer = new DataContractJsonSerializer(typeof(T));
-                data = (T)serializer.ReadObject(stream);
+                File.WriteAllText(file, JsonConvert.SerializeObject(catalogs));
+            }
+            else
+            {
+                using (var stream = assembly.GetManifestResourceStream(file))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string jsonFile = reader.ReadToEnd(); //Make string equal to full file
+                        catalogs = JsonConvert.DeserializeObject<List<Catalog>>(jsonFile);
+                    }      
+                }
             }
 
-            return data;
+            CatalogPageViewModel catalogPageViewModel = new CatalogPageViewModel();
+            catalogPageViewModel.Catalogs = new ObservableCollection<Catalog>(catalogs); ;
+
+            return catalogPageViewModel;
         }
 
         #endregion

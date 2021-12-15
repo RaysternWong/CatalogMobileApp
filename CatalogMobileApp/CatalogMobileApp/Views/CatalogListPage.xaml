@@ -3,18 +3,14 @@
     x:Class="CatalogMobileApp.Views.CatalogListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
     xmlns:behavior="clr-namespace:CatalogMobileApp.Behaviors"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:commonBehavior="clr-namespace:CatalogMobileApp.Behaviors"
     xmlns:controls="clr-namespace:CatalogMobileApp.Controls"
     xmlns:converter="clr-namespace:CatalogMobileApp.Converters"
-    xmlns:helper="clr-namespace:CatalogMobileApp.Helpers"
-    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
-    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
-    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
     xmlns:template="clr-namespace:CatalogMobileApp.Views.Templates"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
     x:Name="catalogListPage"
     Title="Catalog List page"
     BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
@@ -115,7 +111,7 @@
             RowSpacing="0">
 
             <!--  Title View  -->
-            <controls:TitleView Title="Dress" Grid.Row="0">
+            <controls:TitleView Title="Catalog" Grid.Row="0">
                 <controls:TitleView.LeadingView>
                     <buttons:SfButton
                         x:Name="backButton"
@@ -164,7 +160,7 @@
                 IsStickyHeader="False"
                 ItemSize="170"
                 ItemSpacing="0,0,0,16"
-                ItemsSource="{Binding Products}"
+                ItemsSource="{Binding Catalogs}"
                 Style="{StaticResource TransparentSelectionListView}">
 
                 <listView:SfListView.ItemTemplate>
