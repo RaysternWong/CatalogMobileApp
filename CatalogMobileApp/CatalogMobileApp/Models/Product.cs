@@ -121,7 +121,8 @@ namespace CatalogMobileApp.Models
         /// <summary>
         /// Gets or sets the property that has been bound with a label, which displays the discounted price of the product.
         /// </summary>
-        public double DiscountPrice
+        [DataMember(Name = "Price")]
+        public double Price
         {
             get
             {
@@ -131,7 +132,7 @@ namespace CatalogMobileApp.Models
             set
             {
                 this.discountPrice = value;
-                this.NotifyPropertyChanged(nameof(this.DiscountPrice));
+                this.NotifyPropertyChanged(nameof(this.Price));
             }
         }
 

@@ -148,6 +148,12 @@ namespace CatalogMobileApp.ViewModels
             get; set;
         }
 
+        [DataMember(Name = "catalogs")]
+        public ObservableCollection<Catalog> Catalogs
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Gets or sets the property that has been bound with a list view, which displays the filter options.
         /// </summary>

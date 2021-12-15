@@ -88,7 +88,7 @@
                 LineHeight="{OnPlatform Android=1.25,
                                         Default=-1}"
                 Style="{StaticResource SimpleLabelStyle}"
-                Text="{Binding DiscountPrice, StringFormat='RM{0:0 }'}"
+                Text="{Binding Price, StringFormat='RM{0:0 }'}"
                 TextColor="{DynamicResource PrimaryColor}" />
 
 
