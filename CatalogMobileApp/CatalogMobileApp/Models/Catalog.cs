@@ -15,8 +15,8 @@ namespace CatalogMobileApp.Models
 
         public string PreviewImage
         {
-            //get => Images[0]?.SrcSmall;
-            get => "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/Image1.png";
+            get => Images[0]?.SrcSmall;
+            //get => "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/Image1.png";
         }
 
         [JsonProperty("id")]
